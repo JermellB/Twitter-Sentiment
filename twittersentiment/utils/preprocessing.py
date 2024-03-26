@@ -7,6 +7,7 @@ import pickle
 import os
 import nltk
 import logging
+import fickling
 
 
 logging.basicConfig(format="%(message)s", level=logging.INFO)
@@ -52,7 +53,7 @@ class Preprocess:
 
             word_index = None
             with open(path, "rb") as tok:
-                tokenizer_obj = pickle.load(tok)
+                tokenizer_obj = fickling.load(tok)
 
         sequences = tokenizer_obj.texts_to_sequences(corpus)
         tweet_pad = pad_sequences(sequences, maxlen=MAX_LEN, truncating="post", padding="post")
